@@ -1,6 +1,6 @@
 import request from 'request'
 import common from '../config/'
-// 加载编码转换模块  
+// 加载编码转换模块  123
 import iconv from 'iconv-lite'
 import later from 'later'
 import fs from 'fs'
