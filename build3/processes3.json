@@ -1,0 +1,14 @@
+{
+    "apps" : [{
+      "name" : "updateLayerONU",
+      "script": "./bundle3.js",
+      "cwd": "./build3",
+      "watch":[
+          "./config",
+          "./bundle3.js"
+        ],
+      "error_file":"./logs/app3-err.log",
+      "out_file":"./logs/app3-out.log",
+      "log_date_format":"YYYY-MM-DD HH:mm Z"
+      }]
+  }
