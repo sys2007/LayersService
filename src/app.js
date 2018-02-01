@@ -1,6 +1,7 @@
+//多个request请求，考虑先缓存结果，最后一并写入文件
 import request from 'request'
 import common from '../config/'
-// 加载编码转换模块  123
+// 加载编码转换模块 
 import iconv from 'iconv-lite'
 import later from 'later'
 import fs from 'fs'
@@ -44,7 +45,7 @@ function getBody(page = 0) {
         ],
         "needCount": true,
         "pageNum": page,
-        "pageSize": 10000,
+        "pageSize": 2000,
         "requiredFields": ["id", "name", "platformId", "Tags", "civilCode", "onState", "longitude", "latitude"]
     }
     return body
@@ -59,7 +60,12 @@ let intervalFun = () => {
     download(common.outfile)
 }
 
-let download = (savefile, callback) => {
+/**
+ * //入口函数
+ * @param {*} savefile 
+ * @param {*} callback 
+ */
+function download(savefile, callback) {
     requestJson(savefile, currFlag)
 }
 
@@ -114,11 +120,12 @@ function requestJson(savefile, flag) {
             } else {
                 currPage = 1
                 currFlag = true
+                requestStateJson()
             }
         }
     });
-
-
-
 }
 
+function requestStateJson(){
+
+}
